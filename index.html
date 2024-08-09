@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Market Place for Digital Courses and Tutorials</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<style>
+    body {
+        margin: 0;
+        background-color: #f5f5f5;
+    }
+
+    nav {
+        background-color: white;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* Add this line */
+    }
+
+
+    nav a {
+        color: #5C469C;
+        font-weight: bold;
+        text-decoration: none;
+        margin: 0 1rem;
+        transition: color 0.3s;
+    }
+
+    nav a:hover {
+        color: #007BFF;
+    }
+
+    .nav-left {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-right a {
+        margin-left: 1rem;
+    }
+
+
+    .hero {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        color: white;
+        text-align: center;
+        padding: 0 1rem;
+        margin-top: 230px;
+        margin-left: 0;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('learningtocode2.png') no-repeat center center/cover;
+        z-index: -1;
+        margin-top: 200px;
+    }
+
+    @media (min-width: 768px) {
+        .hero h1 {
+            font-size: 3rem;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .hero {
+            margin-left: 200px;
+        }
+    }
+
+    .hero p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero a {
+        padding: 1rem 2rem;
+        background-color: #007BFF;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .hero a:hover {
+        background-color: #0056b3;
+    }
+
+    .footer {
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 1rem 0.5rem;
+        margin-top: 2rem;
+    }
+
+    .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        text-align: left;
+        padding: 1rem;
+    }
+
+    .footer-column {
+        flex: 1;
+        margin: 0.5rem;
+        min-width: 200px;
+    }
+
+    .footer-column h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.25rem;
+    }
+
+    .footer-column p,
+    .footer-column ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    .footer-column a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .footer-column a:hover {
+        color: #F5004F;
+    }
+
+    .footer-column ul li {
+        margin: 0.5rem 0;
+    }
+
+    .social-icons {
+        display: flex;
+        justify-content: flex-start;
+        gap: 0.5rem;
+    }
+
+    .footer-bottom {
+        margin-top: 1rem;
+        font-size: 0.875rem;
+    }
+
+    .container {
+        padding: 2rem;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .achievement {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 1rem;
+        padding: 100px 20px;
+        background-color: #c4e6f9;
+        text-align: center;
+        color: black;
+        background-image: url(blue-light.jpg);
+        background-size: cover;
+        background-position: center;
+
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .achievement img {
+        width: 100%;
+        max-width: 200px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        transition: transform 0.3s ease;
+    }
+
+    .achievement img:hover {
+        transform: scale(1.1);
+    }
+
+    .achievement h3 {
+        margin-top: 0;
+    }
+
+    @media (min-width: 768px) {
+        .achievement {
+            flex-direction: row;
+        }
+
+        .achievement img {
+            margin-right: 2rem;
+            margin-bottom: 0;
+        }
+    }
+
+    .contact-us {
+        background-color: white;
+        padding: 50px;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .contact-us h2 {
+        margin-bottom: 1rem;
+        color: black;
+    }
+
+    .contact-us .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .contact-us label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: black;
+    }
+
+    .contact-us input,
+    .contact-us textarea {
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 12pt;
+    }
+
+    .contact-us button {
+        width: 100%;
+        padding: 0.5rem;
+        background-color: #5C469C;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+    .contact-us button:hover {
+        background-color: #F5004F;
+    }
+
+    .contact-us .success-message {
+        display: none;
+        color: green;
+        margin-top: 1rem;
+    }
+</style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="font-weight: bold;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Logo" style="height: 100px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="customer-services.html">Customer Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="course-catalog.html">Course Catalog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="signup.html">Signup</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="hero">
+        <div style="color: black;">
+            <h1 style="font-size: 40pt;">Online Marketplace <br> for Digital Courses <br> and Tutorials</h1>
+            <p>Learn from the best instructors <br> around the world and enhance your skills.</p>
+            <a href="course-catalog.html">Browse Courses</a>
+        </div>
+    </div>
+
+    <div id="achievement-catalog" class="container" style="cursor: pointer; background-color: #c4e6f9; color: black;">
+        <h1 style="text-align: center; padding-bottom: 50px;">Our Achievements</h1>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="achievement">
+                    <a href="achievement1.html"> <img src="achievement1.png" alt="Achievement 1"></a>
+                    <div>
+                        <h3 style="text-align: center;">1000+ Enrolled Students</h3>
+                        <p style="text-align: center;">Benefit: Our courses have successfully guided over a thousand
+                            students in their learning journey.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="achievement">
+                    <a href="achievement2.html"> <img src="achievement2.png" alt="Achievement 2"></a>
+                    <div>
+                        <h3 style="text-align: center;">High Course Completion Rate</h3>
+                        <p style="text-align: center;">Benefit: Over 90% of our students complete their courses,
+                            reflecting the effectiveness of our teaching methods.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="achievement">
+                    <a href="achievement3.html"> <img src="achievement3.png" alt="Achievement 3"></a>
+                    <div>
+                        <h3 style="text-align: center;">Award-Winning Instructors</h3>
+                        <p style="text-align: center;">Benefit: Our courses are taught by award-winning instructors,
+                            ensuring high-quality education.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="achievement">
+                    <a href="achievement4.html"> <img src="achievement4.png" alt="Achievement 4"></a>
+                    <div>
+                        <h3 style="text-align: center;"> Course Offerings</h3>
+                        <p style="text-align: center;">Benefit: We offer a wide range of courses, catering to various
+                            interests and skill levels.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="achievement">
+                    <a href="achievement5.html"> <img src="achievement5.png" alt="Achievement 5"></a>
+                    <div>
+                        <h3 style="text-align: center;">Global Reach</h3>
+                        <p style="text-align: center;">Benefit: Our platform has a global reach, connecting learners
+                            from around the world.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="achievement">
+                    <a href="achievement6.html"> <img src="achievement6.png" alt="Achievement 6"></a>
+                    <div>
+                        <h3 style="text-align: center;">Student Support</h3>
+                        <p style="text-align: center;">Benefit: We provide excellent student support, ensuring that
+                            learners have the help they need to succeed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5" style="background-color: #c4e6f9; color: black;">
+        <h2 class="text-center mb-5">Benefits of Completing Our Courses</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="career.png" class="card-img-top" alt="Career Advancement">
+                    <div class="card-body">
+                        <h5 class="card-title">Career Advancement</h5>
+                        <p class="card-text">Improve your career opportunities and potential for advancement by
+                            acquiring new and relevant skills.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="skills.png" class="card-img-top" alt="Skills">
+                    <div class="card-body">
+                        <h5 class="card-title">Enhanced Skills</h5>
+                        <p class="card-text">Gain valuable skills and knowledge that are applicable to real-world
+                            scenarios, making you more proficient and capable.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Brown and White Modern Course Completion Certificate (1).png" class="card-img-top"
+                        alt="Certificate">
+                    <div class="card-body">
+                        <h5 class="card-title">Certification</h5>
+                        <p class="card-text">Receive a certificate of completion for each course you finish, enhancing
+                            your resume and career prospects.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="customer-feedback" class="container" style="margin-top: 50px; color: black; background-color:#c4e6f9; display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1rem;
+    padding: 100px 20px;
+    background-color: #c4e6f9;
+    text-align: center;
+    color: black;
+    background-image: url(blue-light.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <h1 style="text-align: center; padding-bottom: 50px;">Customer Feedback</h1>
+
+        <div class="row" style>
+            <div class="col-md-3">
+                <div class="feedback">
+                    <div class="card"
+                        style="width: 18rem; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); background-color: #FFDE4D;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align: center;">Sovandara Rith</h5>
+                            <p class="card-text" style="text-align: center;">"The courses offered here are top-notch.
+                                I've learned so much and the instructors are great!"</p>
+                            <p style="text-align: center; font-style: italic;">Course: HTML & CSS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="feedback">
+                    <div class="card"
+                        style="width: 18rem; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); background-color: #FFA823; color: white;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align: center;">Uylong Song</h5>
+                            <p class="card-text" style="text-align: center;">"I loved the Python course! The content was
+                                clear and easy to follow."</p>
+                            <p style="text-align: center; font-style: italic;">Course: Python for Beginners</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="feedback">
+                    <div class="card"
+                        style="width: 18rem; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); background-color: #E90074; color: white;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align: center;"> Misel Koksal</h5>
+                            <p class="card-text" style="text-align: center;">"A fantastic learning experience. The
+                                courses are very well-structured and informative."</p>
+                            <p style="text-align: center; font-style: italic;">Course: JavaScript Essentials</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="feedback">
+                    <div class="card"
+                        style="width: 18rem; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); background-color: #E72929; color: white;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align: center;">Honglee Kin</h5>
+                            <p class="card-text" style="text-align: center;">"Highly recommend these courses. The
+                                content is up-to-date and very practical."</p>
+                            <p style="text-align: center; font-style: italic;">Course: SQL for Data Analysis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5" style="background-color:#c4e6f9; color: black; display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1rem;
+    padding: 100px 20px;
+    background-color: #c4e6f9;
+    color: black;
+    background-image: url(feedback.jpeg);
+    background-size: cover;
+    background-position: center;
+
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <h2>Customer Feedback</h2>
+        <form>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="mb-3">
+                <label for="feedback" class="form-label">Feedback</label>
+                <textarea class="form-control" id="feedback" rows="5" placeholder="Write your feedback"
+                    required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <div class="container mt-5" style="background-color:#c4e6f9; color: black; display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1rem;
+    padding: 100px 20px;
+    background-color: #c4e6f9;
+   
+    color: black;
+    background-image: url(contact-dd.avif);
+    background-size: cover;
+    background-position: center;
+
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <h2>Contact Us </h2>
+        <form>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="mb-3">
+                <label for="feedback" class="form-label">Message</label>
+                <textarea class="form-control" id="feedback" rows="5" placeholder="Write your message"
+                    required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <div class="container mt-5" style="color: white; background-color:#c4e6f9; display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1rem;
+    padding: 100px 20px;
+    background-color: #c4e6f9;
+    text-align: center;
+    font-weight: bolder;
+    background-image: url(pp-city.jpeg);
+    background-size: cover;
+    background-position: center;
+
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <h2 style="margin-bottom: 100px;">Our Location</h2>
+        <div class="map-container" style="height: 400px;">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.621246729522!2d104.91200781528103!3d11.578071191779925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3109518248f07d03%3A0xf4d93a4811b8a688!2sToul%20Kork%2C%20Phnom%20Penh%2C%20Cambodia!5e0!3m2!1sen!2sus!4v1626863523830!5m2!1sen!2sus"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p><a href="about.html">Learn more about our mission and team</a></p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="customer-services.html">Customer Services</a></li>
+                    <li><a href="course-catalog.html">Course Catalog</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="help-center.html">Help Center</a></li>
+                    <li><a href="terms-of-service.html">Terms of Service</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/linqcheue/" class="social-icon"><img src="ig.webp"
+                            alt="Instagram" style="width: 40px;"></a>
+                    <a href="https://web.facebook.com/profile.php?id=100011248218186" class="social-icon"><img
+                            src="fb.webp" alt="Facebook" style="width: 40px;"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p style="font-style: italic; font-size: 16pt;">They said "No Pain, No Gain" But Sir "Ratana" told us "No
+                Paint, No Picture" </p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 All rights reserved.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
